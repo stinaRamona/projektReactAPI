@@ -30,7 +30,7 @@ const init = async () => {
     });
 
     //routes
-    const routes = require("./routes/admin.route"); 
+    const routes = require("./routes/combined.route"); 
     server.route(routes);
 
 

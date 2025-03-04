@@ -7,7 +7,7 @@ const ReviewSchema = new Mongoose.Schema({
     },  
     //id från användaren
     userId: {
-        type: mongoose.Schema.Types.ObjectId, ref: "User", required: true,
+        type: Mongoose.Schema.Types.ObjectId, ref: "User", required: true,
     }, 
     rating: {
         type: Number
