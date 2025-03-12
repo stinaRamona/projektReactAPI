@@ -15,16 +15,16 @@ const ReviewRouteArr = [
         
     },
 
-    //Hämta ett specifikt blogginlägg
+    //Hämta ett specifikt review för BOK
     {
         method: "GET",
-        path: "/review/{id}",
+        path: "/review/{bookId}",
         options: {
             auth: false
         }, 
         handler: async (request, h) => {
             try {
-                const review = await Review.findById(request.params.id); 
+                const review = await Review.findOne({bookId : request.params.bookId}); 
                 return review || h.response("Inlägget hittades inte").code(404)
             } catch(err) {
                 return h.response(err).code(500)
