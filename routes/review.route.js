@@ -24,13 +24,30 @@ const ReviewRouteArr = [
         }, 
         handler: async (request, h) => {
             try {
-                const review = await Review.findOne({bookId : request.params.bookId}); 
+                const review = await Review.find({bookId : request.params.bookId}); 
                 return review || h.response("Inlägget hittades inte").code(404)
             } catch(err) {
                 return h.response(err).code(500)
             } 
         } 
-    }, 
+    },
+    
+    //hämta specifik review baserat på användarID
+    {
+        method: "GET",
+        path: "/review/{userId}",
+        options: {
+            auth: false
+        }, 
+        handler: async (request, h) => {
+            try {
+                const review = await Review.find({userId : request.params.userId}); 
+                return review || h.response("Inlägget hittades inte").code(404)
+            } catch(err) {
+                return h.response(err).code(500)
+            } 
+        } 
+    },
 
     //Lägg till ett blogginlägg
     {
