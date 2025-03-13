@@ -35,7 +35,7 @@ const ReviewRouteArr = [
     //hämta specifik review baserat på användarID
     {
         method: "GET",
-        path: "/review/{userId}",
+        path: "/review/user/{userId}",
         options: {
             auth: false
         }, 
