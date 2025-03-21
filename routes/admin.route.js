@@ -33,6 +33,24 @@ const adminRouteArr = [
         } 
     }, 
 
+    {
+        method: "GET", 
+        path: "/user/{id}",
+        options: {
+            auth: false
+        },
+        handler: async (request, h) => {
+            try {
+                const user = await User.findById(request.params.id); 
+                return user || h.response("Användaren hittades inte").code(404);
+
+            } catch (error) {
+                console.log(error); 
+                return h.response(err).code(500)
+            }
+        } 
+    },
+
     //För att logga in 
     {
         method: "POST", 
